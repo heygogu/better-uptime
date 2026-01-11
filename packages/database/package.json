@@ -24,8 +24,8 @@
     "pg": "^8.16.3"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "@types/pg": "^8.16.0",
     "eslint": "^8.57.0",
     "prisma": "latest",
