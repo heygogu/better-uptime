@@ -37,12 +37,12 @@ Start by creating a new Turborepo project using the following command:
 npx create-turbo@latest -e with-prisma
 ```
 
-Choose your desired package manager when prompted and a name for the app (e.g., `my-turborepo`). This will scaffold a new Turborepo project with Prisma ORM included and dependencies installed.
+Choose your desired package manager when prompted and a name for the app (e.g., `Better Uptime`). This will scaffold a new Turborepo project with Prisma ORM included and dependencies installed.
 
 Navigate to your project directory:
 
 ```bash
-cd ./my-turborepo
+cd ./better-uptime
 ```
 
 ### 2. Setup a local database with Docker Compose
