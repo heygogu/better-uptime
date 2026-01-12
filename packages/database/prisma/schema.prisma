@@ -9,10 +9,75 @@ generator client {
   provider = "prisma-client-js"
   output = "../generated/client"
 }
+enum HealthStatus {
+  UP
+  DOWN
+  TIMEOUT
+}
 
 model User {
+  createdAt DateTime @default(now())
+  deletedAt DateTime?
+
   id            String    @id @default(cuid())
-  name          String?
+  username          String
+  password          String
   email         String?   @unique
   emailVerified DateTime?
+
+  websites UserWebsite[]
+}
+
+model UserWebsite {
+  createdAt DateTime @default(now())
+  deletedAt DateTime?
+
+  id        String   @id @default(uuid())
+  userId    String
+  websiteId String
+
+  user      User    @relation(fields: [userId], references: [id])
+  website   Website @relation(fields: [websiteId], references: [id])
+
+  @@unique([userId, websiteId])
+}
+
+
+model Website {
+  createdAt DateTime @default(now())
+  deletedAt DateTime?
+
+  id        String   @id @default(uuid())
+  url       String
+
+  users     UserWebsite[]       
+  regions   WebsiteRegion[]
+}
+
+
+model WebsiteRegion{
+  createdAt DateTime @default(now())
+  deletedAt DateTime?
+
+  id String @id @default(uuid())
+  websiteId String
+  regionId String
+  status HealthStatus
+  ping Int?
+
+  website Website @relation(fields: [websiteId], references: [id])
+  region Region @relation(fields: [regionId],references: [id])
+
+  @@unique([websiteId,regionId])
+}
+
+
+model Region {
+  createdAt DateTime @default(now())
+  deletedAt DateTime?
+
+  id String @id @default(uuid())
+  name String
+ 
+  websites WebsiteRegion[]
 }

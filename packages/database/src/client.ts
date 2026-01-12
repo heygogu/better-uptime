@@ -1,5 +1,6 @@
-import { PrismaPg } from '@prisma/adapter-pg';
-import { Pool } from 'pg'; // Import the Pool
+import "dotenv/config";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg"; // Import the Pool
 import { PrismaClient } from "../generated/client";
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
@@ -8,7 +9,7 @@ const globalForPrisma = global as unknown as { prisma: PrismaClient };
 const connectionString = process.env.DATABASE_URL;
 
 const pool = new Pool({
-  connectionString
+  connectionString,
 });
 
 // 2. Pass the pool to the adapter
