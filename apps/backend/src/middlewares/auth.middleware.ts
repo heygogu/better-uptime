@@ -1,7 +1,8 @@
 import type { NextFunction, Request, Response } from "express";
 import jwt, { type JwtPayload } from "jsonwebtoken";
-import { BadRequestError } from "../responses/errors/BadRequestError";
-import { InvalidTokenError } from "../responses/errors/InvalidTokenError";
+import { BadRequestError } from "@/responses/errors/BadRequestError";
+import { InvalidTokenError } from "@/responses/errors/InvalidTokenError";
+import { AppError } from "@/responses/errors/AppError";
 
 interface AuthPayload extends JwtPayload {
   userId: string;
@@ -32,7 +33,7 @@ export async function authMiddleware(
 
     req.user = {
       userId: payload.userId,
-      username: payload.userName,
+      username: payload.username,
     };
 
     if (!payload.userId || !payload.username) {
@@ -41,6 +42,9 @@ export async function authMiddleware(
 
     next();
   } catch (error) {
-    throw new BadRequestError("Error while parsing token", error);
+    if (error instanceof AppError) {
+      throw error;
+    }
+    throw new InvalidTokenError();
   }
 }

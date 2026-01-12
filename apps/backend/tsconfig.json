@@ -5,8 +5,9 @@
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "allowJs": true,
+    "rootDir": "./src",
 
     // Bundler mode
     "moduleResolution": "bundler",
@@ -24,6 +25,9 @@
     // Some stricter flags (disabled by default)
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }

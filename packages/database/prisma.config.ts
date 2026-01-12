@@ -8,5 +8,6 @@ export default defineConfig({
   },
   datasource: {
     url: env("DATABASE_URL"),
+    // url: "postgresql://myuser:mypassword@localhost:5432/mydb?schema=betterstack",
   },
 });

@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
-import { userRegistrationSchema } from "../../schemas/user.schema";
-import { BadRequestError } from "../../responses/errors/BadRequestError";
+import { userRegistrationSchema } from "@/schemas/user.schema";
+import { BadRequestError } from "@/responses/errors/BadRequestError";
 
 export function validateUserBody(
   req: Request,
@@ -13,6 +13,6 @@ export function validateUserBody(
     });
     next();
   } catch (error) {
-    throw new BadRequestError("Invalid inputs");
+    throw new BadRequestError("Invalid inputs", error);
   }
 }
