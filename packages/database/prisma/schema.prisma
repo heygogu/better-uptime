@@ -76,7 +76,7 @@ model Region {
   deletedAt         DateTime?
 
   id                String     @id @default(uuid())
-  name              String
+  name              String     @unique
  
   websites          WebsiteTick[]
 }
