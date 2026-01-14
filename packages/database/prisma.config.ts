@@ -1,4 +1,4 @@
-import "dotenv/config";
+require("dotenv").config();
 import { defineConfig, env } from "prisma/config";
 
 export default defineConfig({
@@ -7,7 +7,6 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    // url: env("DATABASE_URL"),
-    url: "postgresql://myuser:mypassword@localhost:5432/mydb?schema=betterstack",
+    url: env("DATABASE_URL"),
   },
 });
