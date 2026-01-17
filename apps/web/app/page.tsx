@@ -16,6 +16,8 @@ import FooterSection from "@/components/landing/footer-section";
 import { Badge } from "@/components/ui/badge";
 import { Building } from "lucide-react";
 import DarkMode from "@/components/DarkMode";
+import AccountPage from "./account/[path]/page";
+import { useParams } from "next/navigation";
 // import GlobeDemo from "@/components/landing/hero-glob";
 const logos = [
   { src: "/atticus.svg", name: "Horizon" },
@@ -33,6 +35,7 @@ export default function LandingPage() {
   const [progress, setProgress] = useState(0);
   const mountedRef = useRef(true);
 
+  // const params = useParams();
   useEffect(() => {
     const progressInterval = setInterval(() => {
       if (!mountedRef.current) return;
@@ -119,6 +122,7 @@ export default function LandingPage() {
                 {/* Right */}
                 <div className="flex items-center">
                   <DarkMode />
+
                   {/* <button
                     className="
                           h-7 sm:h-8
